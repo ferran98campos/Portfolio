@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef, useLayoutEffect, useCallback} from 'react'
+import { useState, useEffect, useRef, useLayoutEffect} from 'react'
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './neuronsComponent.css';
 import FooterComponent from '../footer/footer'
 
 class Neuron{
-    constructor(id, posX, posY, type, size, animation){
+    constructor(id, projectName, posX, posY, type, size, animation){
         this.id = id;
+        this.projectName = projectName;
         this.posX = posX;
         this.posY = posY;
         this.type = type;
@@ -19,7 +21,6 @@ const NeuronsComponent = () => {
     const [numNeurons, setNumNeurons] = useState(10)
     const [neuronList, setNeuronList] = useState(0)
     const [connectionsList, setConnectionList] = useState(0)
-    
     const ref = useRef(null)
 
     const settings = {
@@ -35,6 +36,13 @@ const NeuronsComponent = () => {
  
     useLayoutEffect(() => {
     }, )
+
+    const navigateHook = useNavigate();
+
+    function navigateTo(id) {
+        console.log(id);
+        navigateHook("/"+id);
+    }
 
     const createNeuronMatrix = () =>{
         if (ref.current.offsetWidth > 0 && ref.current.clientHeight > 0){
@@ -97,7 +105,7 @@ const NeuronsComponent = () => {
             matrix[chosenPosX][chosenPosY] = counter;
             counter++;
 
-            var neuron = new Neuron(counter, chosenPosX * settings.imgWidth*2, chosenPosY* settings.imgHeight*2, "software", 1.1, "animation1"); //1.5 - XL 1.2-L 1.1-M 1.0-S 0.9-XS; 
+            var neuron = new Neuron(counter, "Name Of Project Number "+counter , chosenPosX * settings.imgWidth*2, chosenPosY* settings.imgHeight*2, "software", 1.1, "animation1"); //1.5 - XL 1.2-L 1.1-M 1.0-S 0.9-XS; 
 
             neurons[i] = neuron;
 
@@ -153,7 +161,7 @@ const NeuronsComponent = () => {
             <div ref={ref} id="neurons-layout">
                     {neuronList.length > 0 ? neuronList.map(neuron => {
                         return(
-                            <img className={neuron.type} src={settings.imagePath} width={settings.imgWidth * neuron.size} height={settings.imgHeight * neuron.size} style={{left: neuron.posX, top: neuron.posY, animation: neuron.animation}}></img>
+                            <img title={neuron.projectName} className={neuron.type} src={settings.imagePath} width={settings.imgWidth * neuron.size} height={settings.imgHeight * neuron.size} style={{left: neuron.posX, top: neuron.posY, animation: neuron.animation}} onClick={() => {navigateTo(neuron.id)}}></img>
                         )
                     }):null}
                     
