@@ -241,7 +241,6 @@
 
     border: 10px solid burlywood;
 
-    background: url('../../img/Needle.png'),radial-gradient(circle, rgba(4,140,255,1) 0%, rgba(175,218,255,1) 42%, rgba(255,255,254,1) 43%, rgba(255,254,235,1) 100%) no-repeat;
     background-position: center center;
     background-size:calc(30%);
 }

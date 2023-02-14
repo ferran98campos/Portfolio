@@ -10,7 +10,7 @@
     margin-bottom: 1vh;
 }
 
-#footer-main div{
+#footer-main > div{
     flex-grow: 1;
     margin:auto;
     margin-bottom: 0px;
@@ -63,6 +63,10 @@
 
   .dropup-content:hover .dropup-content{
     display:flex;
+  }
+
+ .dropup-content div{
+    margin-top: 1vh;
   }
 
   .dropup-content div a:hover {
@@ -204,23 +208,109 @@
   #user-persona{
     position: relative;
     width: 70vw;
-    height:80vh;
+    min-height:80vh;
+    height:auto;
     background-color: rgb(254, 255, 248);
     top:10vh;
     left: 30vh;
     z-index: 2;
     border-radius: 10px;
+    display: flex;
   }
 
-  #user-persona-img{
-    width: 40%;
-    height: 100%;
-    border-radius: inherit;
-  }
-
-  #user-persona-img img{
+  #user-persona > div{
+    flex-grow: 1;
     width: 100%;
-    height: 100%;
   }
+
+  #user-persona h3{
+    color: #260052FF;
+  }
+
+#persona-image{
+    background-size: auto max(95%);
+    background-repeat: no-repeat;
+    background-position: -5% 100%;
+    display: flex;
+}
+
+  #user-persona-quote{
+    background-color: rgba(31, 31, 31, 0.8);
+    margin: auto 10% 10% 10%;
+    width: 80%;
+    height: auto;
+    display: flex;
+    border-radius: 10px;
+    padding: 1%;
+  }
+
+  #user-persona-quote p{
+    color: white;
+    font-weight: 600;
+    font-size: x-large;
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  #user-persona-name{
+    margin-top:10%;
+    margin-bottom:5%;
+    width: 100%;
+  }
+
+  #user-persona-name h2{
+    word-spacing: 0.5vw;
+    font-size: x-large;
+    font-weight: 400;
+    align-items: center;
+    margin: auto;
+    height: 5%;
+  }
+
+  #user-persona-flex{
+    width:93%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 5%;
+    margin-bottom: 4%;
+    min-height: 75%;
+  }
+
+  #user-persona-flex div{
+    flex-grow: 2;
+    text-align: justify;
+  }
+
+  #user-persona-flex-mid{
+    flex-grow: 4;
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+  }
+
+  #user-persona-flex-mid div{
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  #user-persona-links ul{
+    padding-left: 5%;
+    list-style-type: none;
+  }
+
+  #user-persona-links li{
+    padding-bottom: 5%;
+    text-align: justify;
+  }
+
+  #user-persona-close{
+    transform: scale(1.5);
+    position:absolute;
+    top:2%;
+    right: 1.5%;
+    cursor: pointer;
+  }
+
 
   
