@@ -12,3 +12,69 @@ code {
     monospace;
 }
 
+#alert-screen{
+  display: none;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1400px) {
+  #alert-screen{
+      display: block;
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(43, 43, 43, 0.5);
+      z-index: 20;
+      display:flex;
+      overflow: hidden;
+      visibility: visible;
+      scroll-behavior: unset;
+  }
+}
+
+#alert-screen *{
+  width: 100%;
+  text-align: center;
+  font-size: x-large;
+  color: white;
+  margin: auto;
+  
+}
+
+#loading-screen{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 43, 43, 0.5);
+  z-index: 20;
+  display:flex;
+  overflow: hidden;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg) scale(1.5);
+      transform-origin: center;
+      
+  }
+  to {
+      transform:rotate(360deg) scale(1.5);
+      transform-origin: center;
+  }
+}
+
+#loading-screen *{
+  width: 100%;
+  text-align: center;
+  font-size: x-large;
+  color: white;
+  margin: auto;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}

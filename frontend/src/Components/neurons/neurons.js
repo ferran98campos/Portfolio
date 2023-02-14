@@ -3,25 +3,30 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './neuronsComponent.css';
 import FooterComponent from '../footer/footer'
+import db from '../../Firebase/firebase.config'
+import { doc, onSnapshot, collection, getDoc, getDocs} from "firebase/firestore";
+import { faSync } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Neuron{
-    constructor(id, projectName, posX, posY, type, size, animation){
+    constructor(id, projectName, posX, posY, type, size){
         this.id = id;
         this.projectName = projectName;
         this.posX = posX;
         this.posY = posY;
         this.type = type;
         this.size = size;
-        this.animation = animation;
     }
 }
 
 const NeuronsComponent = () => {
     const [width, setWidth] = useState(0)
-    const [numNeurons, setNumNeurons] = useState(10)
+    const [numNeurons, setNumNeurons] = useState(0)
+    const [projectSnapshot, setProjectSnapshot] = useState(null)
     const [neuronList, setNeuronList] = useState(0)
     const [connectionsList, setConnectionList] = useState(0)
     const ref = useRef(null)
+    const [blogs,setBlogs]=useState([])
 
     const settings = {
 		imagePath: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMjAgMTgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+R3JvdXA8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAuMDAwMDAwLCA5LjAwMDAwMCkgcm90YXRlKC0zMzAuMDAwMDAwKSB0cmFuc2xhdGUoLTEwLjAwMDAwMCwgLTkuMDAwMDAwKSB0cmFuc2xhdGUoMC4wMDAwMDAsIC0xLjAwMDAwMCkiPiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJQb2x5Z29uIiBmaWxsPSIjRkZGRkZGIiBwb2ludHM9IjEwIC00LjA2MDI0NDJlLTE0IDE4LjY2MDI1NCA1IDE4LjY2MDI1NCAxNSAxMCAyMCAxLjMzOTc0NTk2IDE1IDEuMzM5NzQ1OTYgNSI+PC9wb2x5Z29uPiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJQb2x5Z29uIiBmaWxsPSIjRjBGMEYwIiBwb2ludHM9IjEwIDEuNjI0MDk3NjhlLTE0IDE4LjY2MDI1NCA1IDE4LjY2MDI1NCAxNSAxMCAyMCAxLjMzOTc0NTk2IDE1IDkuOTk5OTk5NzYgMTAiPjwvcG9seWdvbj4gICAgICAgICAgICA8cG9seWdvbiBpZD0iUG9seWdvbiIgZmlsbD0iI0U3RTdFNyIgcG9pbnRzPSIxOC42NjAyNTQgMTUgMTAgMjAgMS4zMzk3NDU5NiAxNSA5Ljk5OTk5OTc2IDEwIj48L3BvbHlnb24+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=',
@@ -30,10 +35,32 @@ const NeuronsComponent = () => {
 	}
 
     useEffect(() => {
-        createNeuronMatrix();
-        window.addEventListener("resize", createNeuronMatrix, false);
-    },[]);
+        getNumberProjects();
+        if(numNeurons>0){
+            createNeuronMatrix();
+            window.addEventListener("resize", createNeuronMatrix, false);
+        }
+    },[numNeurons]);
  
+    const docRef = doc(db, "Projects", "FI5JVjREdnskRUszKYsz");
+
+    const getNumberProjects = async () => {
+        const projectsSnapshop = await getDocs(collection(db, "Projects"));
+        setProjectSnapshot(projectsSnapshop);
+        setNumNeurons(projectsSnapshop.size);
+    }
+
+    const fetchBlogs=async()=>{
+        try {
+            const doc = await getDoc(docRef);
+            // Document was found in the cache. If no cached document exists,
+            // an error will be returned to the 'catch' block below.
+            //console.log("Cached document data:", doc.data());
+          } catch (e) {
+            console.log("Error getting cached document:", e);
+          }
+    }
+
     useLayoutEffect(() => {
     }, )
 
@@ -105,8 +132,7 @@ const NeuronsComponent = () => {
             matrix[chosenPosX][chosenPosY] = counter;
             counter++;
 
-            var neuron = new Neuron(counter, "Name Of Project Number "+counter , chosenPosX * settings.imgWidth*2, chosenPosY* settings.imgHeight*2, "software", 1.1, "animation1"); //1.5 - XL 1.2-L 1.1-M 1.0-S 0.9-XS; 
-
+            var neuron = new Neuron(projectSnapshot.docs[i].id, projectSnapshot.docs[i].data().name , chosenPosX * settings.imgWidth*2, chosenPosY* settings.imgHeight*2, projectSnapshot.docs[i].data().type, projectSnapshot.docs[i].data().size); //2- XL 1.7-L 1.5-M 1.2-S 1-XS; 
             neurons[i] = neuron;
 
             //Substract vital space
@@ -148,7 +174,7 @@ const NeuronsComponent = () => {
                 //Get its coordinates
                 var nodeX = neurons[nodeID].posX;
                 var nodeY = neurons[nodeID].posY;
-                connections[i][j] = [neurons[i].posX, neurons[i].posY, nodeX, nodeY];
+                connections[i][j] = [neurons[i].posX, neurons[i].posY, neurons[i].size, nodeX, nodeY, neurons[nodeID].size];
                 j++;
             }while(j < numConnections);
         }
@@ -157,18 +183,24 @@ const NeuronsComponent = () => {
 
     return (
         <div>
+            <div id="alert-screen">
+                <p>This portfolio is <i>still</i> not prepared to be presented on your current device. Please, try using a bigger screen.</p>
+            </div>
+            <div id="loading-screen" style={{visibility: numNeurons>0 ? "hidden" : "visible"}}>
+                <FontAwesomeIcon icon={faSync}/>
+            </div>
             <h1>PORTFOLIO</h1>
             <div ref={ref} id="neurons-layout">
                     {neuronList.length > 0 ? neuronList.map(neuron => {
                         return(
-                            <img title={neuron.projectName} className={neuron.type} src={settings.imagePath} width={settings.imgWidth * neuron.size} height={settings.imgHeight * neuron.size} style={{left: neuron.posX, top: neuron.posY, animation: neuron.animation}} onClick={() => {navigateTo(neuron.id)}}></img>
+                            <img title={neuron.projectName} className={neuron.type} src={settings.imagePath} width={settings.imgWidth * neuron.size} height={settings.imgHeight * neuron.size} style={{left: neuron.posX, top: neuron.posY}} onClick={() => {navigateTo(neuron.id)}}></img>
                         )
                     }):null}
                     
                     {connectionsList.length > 0 ? connectionsList.map(connection => {
                         return(
                             <svg>
-                                <line strokeWidth="2px" stroke="rgba(225, 219, 255,0.2)"  x1={connection[0]+settings.imgWidth/2} y1={connection[1]+settings.imgHeight/2} x2={connection[2]+settings.imgWidth/2} y2={connection[3]+settings.imgHeight/2}/>
+                                <line strokeWidth="2px" stroke="rgba(225, 219, 255,0.2)"  x1={connection[0]+settings.imgWidth * connection[2]/2} y1={connection[1]+settings.imgHeight * connection[2] /2} x2={connection[3]+settings.imgWidth * connection[5] /2} y2={connection[4]+settings.imgHeight * connection[5] /2}/>
                             </svg>           
                         )
                     }):null}

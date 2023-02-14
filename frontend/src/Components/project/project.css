@@ -20,27 +20,34 @@
   margin-bottom: 5vh;
 }
 
-
-
 #project-body hr{
   width: 90%;
 }
 
 #flex-abstract-image{
+  width: auto;
   margin: auto;
   display: flex;
   flex-direction: row;
   gap: 5%;
 }
 
-#abstract{
-  width: 60%;
+#image{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  max-width: 40%;
 }
 
-#flex-abstract-image img{
+#image img{
+  margin: auto;
   height: auto;
-  width: 35%;
+  width: 80%;
   border-radius: 10px;
+}
+
+#abstract{
+  width: 60%;
 }
 
 #image-flex{
@@ -54,7 +61,7 @@
 }
 
 #image-flex img{
-  height: 100%;
+  max-height: 100%;
   margin-right: 2vw;
   border-radius: 5px;
 }

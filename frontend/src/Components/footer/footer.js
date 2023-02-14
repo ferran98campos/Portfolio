@@ -68,7 +68,7 @@ const FooterComponent = () => {
             var image="/img/Help_"+i+".PNG"
             helpList[i-1] = ["",image];
         }
-        helpList[0][0] = "This portfolio is a constellation of projects. You will notice some 'cubes' or 'stars' connected to each other, varying in both size and colour. Each cube represents a project, you can find out about it by clicking on it."
+        helpList[0][0] = "This portfolio is a constellation of projects. You will notice some 'cubes' or 'stars' connected to each other, varying in both size and colour. Each cube represents a project, you can find out about it by clicking on it. The shape of the constellation (the cube distribution, and their connections) varies each time you refresh the webpage. If you don't like the shape you got, try reloading the webpage until you get one you like."
         helpList[1][0] = "The project's colour represents the topic of the project. There are a total of four possible colours: Red (Software); Green (Interaction); Pink (Design); and Yellow (Other topics)."
         helpList[2][0] = "The cubes can also vary in size. The size represents the complexity of the project: the bigger the cube, the more complex it is."
         helpList[3][0] = "Last but not least. You can find more about me in the footer. You will find access to more information about me, and links that might be of your interests."
@@ -166,8 +166,6 @@ const FooterComponent = () => {
                     </div>
                 </div>
             </div>
-
-            
 
             <div id="footer-main">
                 <div id="Help" ref={helpButtonOpenRef}>Help</div>
