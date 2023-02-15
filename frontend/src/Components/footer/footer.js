@@ -108,7 +108,7 @@ const FooterComponent = () => {
             <div id="user-persona-background" style={{display: personaShowing==true ? "block" : "none"}}>
                 <div id="user-persona" >
                     <FontAwesomeIcon icon={faX} id="user-persona-close" onClick={closePersonaLayout}/>
-                    <div id="persona-image" style={{backgroundImage:'url(\'/img/persona_photo.png\')'}}>
+                    <div id="persona-image" style={{backgroundImage:'url(\'./img/persona_photo.png\')'}}>
                         <div id="user-persona-quote">
                             <p>"I believe the user should always be the cornerstone of software development"</p>
                         </div>
