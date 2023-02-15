@@ -47,6 +47,10 @@ const ProjectComponent = () => {
           }
     }
 
+    const replaceWithBr = (string) =>{
+        return string.replaceAll("[SPACE]", "<br /><br />");
+    }
+
     return (
         <div id="project-body">
             <div onClick={() => {navigateTo()}}>
@@ -59,16 +63,16 @@ const ProjectComponent = () => {
             <hr></hr>
             <div id="flex-abstract-image">
                 <div id="image">
-                    <img src={projectMainImage}></img>
+                    <img src={'/img/'+id+'/'+projectMainImage}></img>
                 </div>
                 <div id="abstract">
                     <h2>Abstract</h2>
-                    <p>{projectAbstract}</p>
+                    <p dangerouslySetInnerHTML={{__html: replaceWithBr(projectAbstract)}}/>
                 </div>
             </div>
             <hr></hr>
             <div id="project-body-text">
-                {projectBody}
+                <p dangerouslySetInnerHTML={{__html: replaceWithBr(projectBody)}}/>
             </div>
             <hr></hr>
             <div>
@@ -77,7 +81,7 @@ const ProjectComponent = () => {
                     {
                         projectOtherImages.map(path=> {
                             return(
-                                <img src={path}></img>
+                                <img src={'/img/'+id+'/'+path}></img>
                             )
                         })
                     }
@@ -92,7 +96,7 @@ const ProjectComponent = () => {
                             const nonArray = pathArray.replace('[','').replace(']','');
                             const array = nonArray.split(',')
                             return(
-                                <li><a href={array[1]}>{array[0]}</a></li>
+                                <li><b><a href={array[1]}>{array[0]}</a></b></li>
                             )
                         })
                     }

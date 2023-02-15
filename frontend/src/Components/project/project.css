@@ -42,12 +42,13 @@
 #image img{
   margin: auto;
   height: auto;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
 }
 
 #abstract{
   width: 60%;
+  text-align: justify;
 }
 
 #image-flex{
