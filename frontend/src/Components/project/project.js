@@ -63,7 +63,7 @@ const ProjectComponent = () => {
             <hr></hr>
             <div id="flex-abstract-image">
                 <div id="image">
-                    <img src={'/img/'+id+'/'+projectMainImage}></img>
+                    <img src={'./img/'+id+'/'+projectMainImage}></img>
                 </div>
                 <div id="abstract">
                     <h2>Abstract</h2>
@@ -81,7 +81,7 @@ const ProjectComponent = () => {
                     {
                         projectOtherImages.map(path=> {
                             return(
-                                <img src={'/img/'+id+'/'+path}></img>
+                                <img src={'./img/'+id+'/'+path}></img>
                             )
                         })
                     }
