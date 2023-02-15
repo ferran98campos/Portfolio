@@ -65,7 +65,7 @@ const FooterComponent = () => {
     const defineHelpList = () =>{
         var helpList = Array(4);
         for (var i=1; i<helpList.length+1;i++){
-            var image="/img/Help_"+i+".PNG"
+            var image="./img/Help_"+i+".PNG"
             helpList[i-1] = ["",image];
         }
         helpList[0][0] = "This portfolio is a constellation of projects. You will notice some 'cubes' or 'stars' connected to each other, varying in both size and colour. Each cube represents a project, you can find out about it by clicking on it. The shape of the constellation (the cube distribution, and their connections) varies each time you refresh the webpage. If you don't like the shape you got, try reloading the webpage until you get one you like."
