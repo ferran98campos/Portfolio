@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "http://{ferran98campos}.github.io/{Portfolio}",
+  "homepage": "http://ferran98campos.github.io/Portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
