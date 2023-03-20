@@ -228,7 +228,7 @@
   }
 
 #persona-image{
-    background-size: auto max(95%);
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: -5% 100%;
     display: flex;
