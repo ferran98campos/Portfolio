@@ -17,7 +17,7 @@ code {
   overflow: hidden;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 0px) {
   #alert-screen{
       display: block;
       position: absolute;
