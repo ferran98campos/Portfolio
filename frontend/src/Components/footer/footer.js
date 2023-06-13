@@ -27,6 +27,7 @@ const FooterComponent = () => {
  
     const checkTutorial = () =>{
         if(localStorage.getItem('tutorialCompleted') == undefined){
+            document.getElementById('legend').style.display = 'none';
             openHelpLayout();
             localStorage.setItem('tutorialCompleted',true);
         }else{
@@ -47,18 +48,22 @@ const FooterComponent = () => {
     }
 
     const closeHelpLayout = () =>{
+        document.getElementById('legend').style.display = 'block';
         setHelpShowing(false);
     }
 
     const openHelpLayout = () =>{
+        document.getElementById('legend').style.display = 'none';
         setHelpShowing(true);
     }
 
     const openPersonaLayout = () =>{
+        document.getElementById('legend').style.display = 'none';
         setPersonaShowing(true);
     }
 
     const closePersonaLayout = () =>{
+        document.getElementById('legend').style.display = 'block';
         setPersonaShowing(false);
     }
 
@@ -174,7 +179,6 @@ const FooterComponent = () => {
                     <div className="dropup-content">
                         <div><FontAwesomeIcon icon={faGithub}/><a href="https://github.com/ferran98campos?tab=repositories"> Github</a></div>
                         <div><FontAwesomeIcon icon={faLinkedin}/><a href="https://www.linkedin.com/in/ferran-campos-llopart/"> LinkedIn</a></div>
-                        <div><FontAwesomeIcon icon={faFile}/><a href="https://www.linkedin.com/in/ferran-campos-llopart/"> CV</a></div>
                     </div>
                 </div>
             </div>

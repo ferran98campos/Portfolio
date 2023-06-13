@@ -8,6 +8,7 @@
     gap: 5vw;
     text-align: center;
     margin-bottom: 1vh;
+
 }
 
 #footer-main > div{
@@ -191,7 +192,6 @@
   #help-button button{
     text-align: center;
     margin-left: 40%;
-    width: 20%;
     height: 75%;
     background-color: #dd7c44; /* Green */
     border: none;
@@ -212,7 +212,7 @@
     height:auto;
     background-color: rgb(254, 255, 248);
     top:10vh;
-    left: 30vh;
+    left: 15vw;
     z-index: 2;
     border-radius: 10px;
     display: flex;
@@ -228,11 +228,12 @@
   }
 
 #persona-image{
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: -5% 100%;
     display: flex;
 }
+
 
   #user-persona-quote{
     background-color: rgba(31, 31, 31, 0.8);
@@ -311,6 +312,70 @@
     right: 1.5%;
     cursor: pointer;
   }
+  
+/* Large devices (less than 1200px) */
+@media only screen and (max-width: 1200px) {
+  #user-persona, #help-display{
+    position: relative;
+    width: 90vw;
+    min-height:80vh;
+    height:auto;
+    background-color: rgb(254, 255, 248);
+    top:10vh;
+    left: 5vw;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+  }
 
+
+  #help-display{
+    height: 90%;
+    flex-direction: column;
+  }
+
+  #help-upper{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Medium devices and small (less than 992px) */
+@media only screen and (max-width: 992px) {
+  #user-persona, #help-display{
+    position: relative;
+    width: 95vw;
+    min-height:80vh;
+    height:auto;
+    background-color: rgb(254, 255, 248);
+    top:0vh;
+    left: 2.5vw;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+  }
+
+  #user-persona{
+    flex-direction: column-reverse;
+  }
+
+  #help-display{
+    height: 90%;
+    flex-direction: column;
+  }
+  #persona-image{
+    background-repeat: no-repeat;
+    background-position: -5% 100%;
+    display: flex;
+    height: 100%;
+    min-height: 800px;
+    background-size: contain;
+  }
+
+  #user-persona-name{
+    text-align: center;
+  }
+}
 
   

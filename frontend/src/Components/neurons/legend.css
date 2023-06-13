@@ -1,0 +1,69 @@
+#legend{
+    display: block;
+    position: absolute;
+    width: 25vw;
+    text-align: center;
+    background-color: rgba(5, 0, 27, 0.7);
+    border: 2px solid rgba(225, 219, 255,0.75);
+    border-radius: 15px;
+    right: 2vw;
+    bottom: 2vh;
+    z-index: 5;
+    color: rgb(254, 255, 248);
+}
+
+#legend:hover {
+    opacity: 1;
+    background-color: rgba(5, 0, 27, 1);
+    transition: all 1s ease;
+}
+
+#legend-arrow{
+    min-height: 10%;
+    background-color: black;
+    opacity: 1;
+    border-radius: 20px;
+}
+
+#legend-arrow:hover{
+    cursor: pointer;
+}
+
+#legend hr{
+    width:80%;
+}
+
+#project-type{
+    display: flex;
+    width: 80%;
+    margin:auto;
+    font-size: 1vw;
+}
+
+#project-type div{
+    flex-grow: 1;
+}
+
+#project-visibility{
+    display: block;
+    transition: all 1s ease;
+    opacity: 0.4;
+}
+
+#project-visibility:hover{
+    opacity: 1;
+    transition: all 1s ease;
+}
+
+@media only screen and (max-width: 768px) {
+    #project-type{
+        flex-direction: column;
+        font-size: 2vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #legend{
+        visibility: hidden;
+    }
+}

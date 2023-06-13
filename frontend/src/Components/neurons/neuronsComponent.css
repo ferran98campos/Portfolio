@@ -1,3 +1,7 @@
+:root {
+    --arrow-position: 50%;
+  }
+
 body{
     width: 100vw;
     height: 100vh;
@@ -16,7 +20,6 @@ body{
 }
 
 h1{
-    height: 6vh;
     color: rgba(225, 219, 255,0.75);
     text-align: center;
     font-size:xx-large;
@@ -41,24 +44,25 @@ h1{
     transition: ease-in 0.1s;
 }
 
-#neurons-layout img:hover{
+img:hover{
+    cursor: pointer;
     transform: scale(1.5);
     transition: ease-in 0.1s;
 }
 
-#neurons-layout img.others{
+img.others{
     filter: sepia(13%) saturate(3207%);
 }
 
-#neurons-layout img.software{
+img.software{
     filter: sepia(25%) saturate(10207%) hue-rotate(-65deg);
 }
 
-#neurons-layout img.interaction{
+img.interaction{
     filter: sepia(25%) saturate(2007%) hue-rotate(-300deg) brightness(80%);
 }
 
-#neurons-layout img.design{
+img.design{
     filter: sepia(13%) saturate(3207%) hue-rotate(-160deg);
 }
 
@@ -66,5 +70,36 @@ h1{
     position:absolute;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
+    float: right;
 }
+
+#projectname{
+    border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(254, 255, 248);
+    position:absolute;
+    visibility: hidden;
+    z-index: 10;
+    font-style: italic;
+    font-weight: 450;
+}
+
+#projectname:after,
+#projectname:before {
+  bottom: 100%;
+  border: 1px solid black;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+#projectname:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #ffffff;
+    border-width: 10px;
+    margin-left: -10px;
+    left: var(--arrow-position);
+  }
