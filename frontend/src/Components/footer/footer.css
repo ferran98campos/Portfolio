@@ -187,11 +187,12 @@
 
   #help-button{
     height: 10%;
+    text-align: center;
   }
 
   #help-button button{
+    margin: 0;
     text-align: center;
-    margin-left: 40%;
     height: 75%;
     background-color: #dd7c44; /* Green */
     border: none;
@@ -211,7 +212,7 @@
     min-height:80vh;
     height:auto;
     background-color: rgb(254, 255, 248);
-    top:10vh;
+    top:5vh;
     left: 15vw;
     z-index: 2;
     border-radius: 10px;
@@ -317,12 +318,12 @@
 @media only screen and (max-width: 1200px) {
   #user-persona, #help-display{
     position: relative;
-    width: 90vw;
+    width: 100vw;
     min-height:80vh;
     height:auto;
     background-color: rgb(254, 255, 248);
-    top:10vh;
-    left: 5vw;
+    top:0vh;
+    left: 0vw;
     z-index: 2;
     border-radius: 10px;
     display: flex;
@@ -330,7 +331,7 @@
 
 
   #help-display{
-    height: 90%;
+    height: 100%;
     flex-direction: column;
   }
 
@@ -342,15 +343,23 @@
 }
 
 /* Medium devices and small (less than 992px) */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 600px) {
+
+  #footer-main{
+    text-align: center;
+    height:9vh;
+    margin: auto;
+    margin-top:80vh;
+  }
+
   #user-persona, #help-display{
     position: relative;
-    width: 95vw;
+    width: 100vw;
     min-height:80vh;
     height:auto;
     background-color: rgb(254, 255, 248);
     top:0vh;
-    left: 2.5vw;
+    left: 0vw;
     z-index: 2;
     border-radius: 10px;
     display: flex;
@@ -361,7 +370,7 @@
   }
 
   #help-display{
-    height: 90%;
+    height: 100%;
     flex-direction: column;
   }
   #persona-image{

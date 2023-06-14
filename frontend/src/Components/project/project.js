@@ -22,7 +22,6 @@ const ProjectComponent = () => {
     const navigateHook = useNavigate();
 
     function navigateTo() {
-        console.log(id);
         navigateHook("/");
     }
 
@@ -63,7 +62,7 @@ const ProjectComponent = () => {
             <hr></hr>
             <div id="flex-abstract-image">
                 <div id="image">
-                    <img src={'https://ferran98campos.github.io/Portfolio/img/'+id+'/'+projectMainImage}></img>
+                    <img id={'mainImage-'+id} src={'https://ferran98campos.github.io/Portfolio/img/'+id+'/'+projectMainImage}></img>
                 </div>
                 <div id="abstract">
                     <h2>Abstract</h2>
@@ -79,9 +78,9 @@ const ProjectComponent = () => {
                 <h2>Images</h2>
                 <div id="image-flex">
                     {
-                        projectOtherImages.map(path=> {
+                        projectOtherImages.map((path, index)=> {
                             return(
-                                <img src={'https://ferran98campos.github.io/Portfolio/img/'+id+'/'+path}></img>
+                                <img key={'image-'+index} src={'https://ferran98campos.github.io/Portfolio/img/'+id+'/'+path}></img>
                             )
                         })
                     }
@@ -92,17 +91,20 @@ const ProjectComponent = () => {
                 <h2>Links</h2>
                 <ul>
                     {
-                        projectLinks.map(pathArray => {
+                        projectLinks.map((pathArray, index) => {
                             const nonArray = pathArray.replace('[','').replace(']','');
                             const array = nonArray.split(',')
                             return(
-                                <li><b><a href={array[1]}>{array[0]}</a></b></li>
+                                <li key={'link-'+index}><b><a href={array[1]}>{array[0]}</a></b></li>
                             )
                         })
                     }
                 </ul>
             </div>
-            <button onClick={() => {navigateTo()}}>Go Back</button>
+            <div id="go-back-button">
+                <button onClick={() => {navigateTo()}}>Go Back</button>
+            </div>
+            
         </div>
     )
 }

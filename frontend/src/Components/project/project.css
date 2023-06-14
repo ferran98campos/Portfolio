@@ -3,6 +3,7 @@
   height: auto;
   margin: auto;
   background-color: rgb(254, 255, 248);
+  text-align: justify;
 }
 
 #project-body h1{
@@ -67,9 +68,13 @@
   border-radius: 5px;
 }
 
-button{
+#go-back-button{
   text-align: center;
-  margin: auto auto 2vh 40%;
+}
+
+button{
+  
+  margin: 0;
   height: 5vh;
   background-color: #dd7c44; /* Green */
   border: none;

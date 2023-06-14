@@ -44,7 +44,7 @@ h1{
     transition: ease-in 0.1s;
 }
 
-img:hover{
+img.software:hover, img.interaction:hover, img.design:hover, img.others:hover{
     cursor: pointer;
     transform: scale(1.5);
     transition: ease-in 0.1s;

@@ -60,7 +60,6 @@ const NeuronsComponent = () => {
 
             setTimeout(() => {
                 let neurons = document.getElementsByClassName("neuron");
-                console.log(neurons);
                 setNeuronHTMLList([...neurons]);
                 
             }, 1); 
@@ -69,6 +68,8 @@ const NeuronsComponent = () => {
         
     },[numNeurons]);
  
+
+
     //Use Effect for the project name
     useEffect(() => {
         let projectName = document.getElementById('projectname');
@@ -79,41 +80,13 @@ const NeuronsComponent = () => {
             for(let i=0; i < neuronHTMLList.length ; i++){
                 
                 //When mouse is on top (hover)
+                neuronHTMLList[i].addEventListener('touchstart', (event) => {
+                    displayName(projectName, neuronHTMLList, i);
+                });
+
                 neuronHTMLList[i].addEventListener('mouseover', (event) => {
-                    //console.log(neuronHTMLList[i].title);
-                    //Get the neuron project title
-                    projectName.innerHTML = neuronHTMLList[i].title;
-                    //Get the position for the project title. Needs to be centered. It calculated by using (neuron.posX + neuron.width /2) - projectName.width / 2.
-                    let projectNameLeft = parseFloat(neuronHTMLList[i].style.left.replace("px","")) - projectName.clientWidth  / 2 + neuronHTMLList[i].width / 2;
-
-                    //However if the neuron is close to the left border of the screen. The position of the title will be 0 and its arrow moved just below the neuron
-                    if(projectNameLeft < 0){
-                        projectNameLeft = 0;
-                        //The position of the triangle is calculate by: (neuron.posX + neuron.width /2) - projectName.width
-                        projectName.style.setProperty("--arrow-position", (parseFloat(neuronHTMLList[i].style.left.replace("px","")) - projectNameLeft + neuronHTMLList[i].width / 2) + "px");
-                    }else if(projectNameLeft + projectName.offsetWidth >= document.getElementById('neurons-layout').offsetWidth){
-                        //If the neuron is close to the right border, then the position is calculated to the title dosnt go beyond the screen, and the triangle is positioned under the neuron
-                        projectNameLeft = document.getElementById('neurons-layout').offsetWidth - projectName.offsetWidth;
-                        //The position of the triangle is calculate by: (neuron.posX + neuron.width /2) - projectName.width
-                        projectName.style.setProperty("--arrow-position", (parseFloat(neuronHTMLList[i].style.left.replace("px","")) - projectNameLeft + neuronHTMLList[i].width / 2) + "px");
-                    }
-                    else{
-                        //Otherwise the triangle is always positioned in the middle.
-                        projectName.style.setProperty("--arrow-position", "50%");
-                    }
-
-                    //We set the position on the DOM
-                    projectName.style.left = projectNameLeft + "px";
-                    
-                    //Do the same with the position on the Y axis
-                    projectName.style.top = (parseFloat(neuronHTMLList[i].style.top.replace("px","")) + neuronHTMLList[i].height * 1.5 ) + "px";
-                    console.log(projectName.innerHTML);
-                    //Set the image title to "" so that the name is not visible once the user hovers on the image
-                    neuronHTMLList[i].title = "";
-                    console.log(projectName.innerHTML);
-                    //Setting the title to visible
-                    projectName.style.visibility = "visible";
-                })
+                    displayName(projectName, neuronHTMLList, i);
+                });
             
                 //Then, for each neuron, when the mouse is out, the projectTitle is hidden, and the name of the neuron stored back in the image title
                 neuronHTMLList[i].addEventListener('mouseout', (event) => {
@@ -122,9 +95,6 @@ const NeuronsComponent = () => {
                     neuronHTMLList[i].title = projectName.innerHTML;
                 })
                 
-                
-                
-                    
                 
             }
             
@@ -164,7 +134,41 @@ const NeuronsComponent = () => {
         return arr.reduce(function (flat, toFlatten) {
           return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
         }, []);
-      }
+    }
+
+    function displayName(projectName, neuronHTMLList, i){
+        //Get the neuron project title
+        projectName.innerHTML = neuronHTMLList[i].title;
+        //Get the position for the project title. Needs to be centered. It calculated by using (neuron.posX + neuron.width /2) - projectName.width / 2.
+        let projectNameLeft = parseFloat(neuronHTMLList[i].style.left.replace("px","")) - projectName.clientWidth  / 2 + neuronHTMLList[i].width / 2;
+
+        //However if the neuron is close to the left border of the screen. The position of the title will be 0 and its arrow moved just below the neuron
+        if(projectNameLeft < 0){
+            projectNameLeft = 0;
+            //The position of the triangle is calculate by: (neuron.posX + neuron.width /2) - projectName.width
+            projectName.style.setProperty("--arrow-position", (parseFloat(neuronHTMLList[i].style.left.replace("px","")) - projectNameLeft + neuronHTMLList[i].width / 2) + "px");
+        }else if(projectNameLeft + projectName.offsetWidth >= document.getElementById('neurons-layout').offsetWidth){
+            //If the neuron is close to the right border, then the position is calculated to the title dosnt go beyond the screen, and the triangle is positioned under the neuron
+            projectNameLeft = document.getElementById('neurons-layout').offsetWidth - projectName.offsetWidth;
+            //The position of the triangle is calculate by: (neuron.posX + neuron.width /2) - projectName.width
+            projectName.style.setProperty("--arrow-position", (parseFloat(neuronHTMLList[i].style.left.replace("px","")) - projectNameLeft + neuronHTMLList[i].width / 2) + "px");
+        }
+        else{
+            //Otherwise the triangle is always positioned in the middle.
+            projectName.style.setProperty("--arrow-position", "50%");
+        }
+
+        //We set the position on the DOM
+        projectName.style.left = projectNameLeft + "px";
+        
+        //Do the same with the position on the Y axis
+        projectName.style.top = (parseFloat(neuronHTMLList[i].style.top.replace("px","")) + neuronHTMLList[i].height * 1.5 ) + "px";
+        
+        //Set the image title to "" so that the name is not visible once the user hovers on the image
+        neuronHTMLList[i].title = "";
+        //Setting the title to visible
+        projectName.style.visibility = "visible";
+    }
 
     const getNumberProjects = async (resize) => {
         if(!resize){
@@ -227,7 +231,6 @@ const NeuronsComponent = () => {
     const navigateHook = useNavigate();
 
     function navigateTo(id) {
-        console.log(id);
         navigateHook("/"+id);
     }
 
@@ -395,13 +398,13 @@ const NeuronsComponent = () => {
                     </div>
                     {neuronList.length > 0 ? neuronList.map(neuron => {
                         return(
-                            <img title={neuron.projectName} className={"neuron "+ neuron.type} src={settings.imagePath} width={settings.imgWidth * neuron.size} height={settings.imgHeight * neuron.size} style={{left: neuron.posX, top: neuron.posY}} onClick={() => {navigateTo(neuron.id)}}></img>
+                            <img title={neuron.projectName} key={neuron.id} className={"neuron "+ neuron.type} src={settings.imagePath} width={settings.imgWidth * neuron.size} height={settings.imgHeight * neuron.size} style={{left: neuron.posX, top: neuron.posY}} onClick={() => {navigateTo(neuron.id)}}></img>
                             )
                     }):null}
                     
-                    {connectionsList.length > 0 ? connectionsList.map(connection => {
+                    {connectionsList.length > 0 ? connectionsList.map((connection,index) => {
                         return(
-                            <svg>
+                            <svg key={'line-'+index}>
                                 <line strokeWidth="2px" stroke="rgba(225, 219, 255,0.2)"  x1={connection[0]+settings.imgWidth * connection[2]/2} y1={connection[1]+settings.imgHeight * connection[2] /2} x2={connection[3]+settings.imgWidth * connection[5] /2} y2={connection[4]+settings.imgHeight * connection[5] /2}/>
                             </svg>           
                         )
