@@ -8,7 +8,7 @@ body{
     background-color: #05001b;
     background-size: 100% 100%;
     background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-    background-image: radial-gradient(22% 23% at 25% 18%, #260052FF 0%, #073AFF00 100%),radial-gradient(38% 42% at 35% 40%, #260052FF 0%, #073AFF00 100%),radial-gradient(38% 34% at 30% 73%, #002952FF 0%, #073AFF00 100%),radial-gradient(38% 34% at 47% 17%, #002952FF 0%, #073AFF00 100%),radial-gradient(38% 34% at 68% 54%, #002B52FF 0%, #073AFF00 100%),radial-gradient(35% 41% at 69% 22%, #0E0052FF 0%, #073AFF00 100%),radial-gradient(35% 41% at 50% 44%, #001C52FF 0%, #073AFF00 100%),radial-gradient(35% 41% at 86% 75%, #0E0052FF 0%, #073AFF00 100%),radial-gradient(24% 25% at 114% 75%, #070038FF 0%, #073AFF00 100%),radial-gradient(24% 39% at 112% 24%, #004645FF 0%, #073AFF00 99%),linear-gradient(20deg, #05001b 0%, #05001b 99%);
+    background-image: radial-gradient(22% 23% at 25% 18%, #260052 0%, #073aff00 100%),radial-gradient(38% 42% at 35% 40%, #260052FF 0%, #073AFF00 100%),radial-gradient(38% 34% at 30% 73%, #002952FF 0%, #073AFF00 100%),radial-gradient(38% 34% at 47% 17%, #002952FF 0%, #073AFF00 100%),radial-gradient(38% 34% at 68% 54%, #002B52FF 0%, #073AFF00 100%),radial-gradient(35% 41% at 69% 22%, #0E0052FF 0%, #073AFF00 100%),radial-gradient(35% 41% at 50% 44%, #001C52FF 0%, #073AFF00 100%),radial-gradient(35% 41% at 86% 75%, #0E0052FF 0%, #073AFF00 100%),radial-gradient(24% 25% at 114% 75%, #070038FF 0%, #073AFF00 100%),radial-gradient(24% 39% at 112% 24%, #004645FF 0%, #073AFF00 99%),linear-gradient(20deg, #05001b 0%, #05001b 99%);
     
 }
 
@@ -19,7 +19,7 @@ body{
     flex-direction: column;
 }
 
-h1{
+#portfolio h1{
     color: rgba(225, 219, 255,0.75);
     text-align: center;
     font-size:xx-large;
