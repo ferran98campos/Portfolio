@@ -1,5 +1,8 @@
 import { useState, useEffect} from 'react';
 import './main.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const MainComponent = () => {
     const [width, setWidth] = useState(0)
@@ -59,6 +62,11 @@ const MainComponent = () => {
                 <a>SKILLS</a>
                 <a>PROJECTS</a>
                 <a>CONNECT</a>
+            </section>
+            <section id="connect-slide">
+                <a href="https://www.linkedin.com/in/ferran-campos-llopart/"><FontAwesomeIcon icon={faLinkedin}/></a>
+                <a href="https://github.com/ferran98campos?tab=repositories"><FontAwesomeIcon icon={faGithub}/></a>
+                <a href="mailto:ferran98campos@gmail.com"><FontAwesomeIcon icon={faEnvelope}/></a>
             </section>
             <section id='presentation'>
                 <div>

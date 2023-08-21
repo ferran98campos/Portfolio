@@ -19,6 +19,25 @@
     color: #ffffff;
 }
 
+#connect-slide{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    position: fixed;
+    right: 5vw;
+    justify-content: center;
+    align-items: center;
+}
+
+#connect-slide a{
+    padding-bottom: 20px; 
+}
+
+#connect-slide svg{
+    color: rgba(181, 177, 192,50%);
+    width: 25px;
+    height: 25px;
+}
 
 #presentation{
     display: flex;
